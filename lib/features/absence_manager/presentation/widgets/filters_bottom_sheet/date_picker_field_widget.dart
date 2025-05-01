@@ -40,7 +40,8 @@ class _DatePickerFieldWidgetState extends State<DatePickerFieldWidget> {
           labelText: widget.label,
           prefixIcon: const Icon(Icons.calendar_today),
           suffixIcon: controller.text.isNotEmpty
-              ? IconButton(onPressed: _clearDate, icon: Icon(Icons.cancel))
+              ? IconButton(
+                  onPressed: _clearDate, icon: const Icon(Icons.cancel))
               : null,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
