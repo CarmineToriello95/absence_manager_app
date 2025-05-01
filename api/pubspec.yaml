@@ -1,0 +1,17 @@
+name: api
+description: Crewmeister Frontend Coding Challenge
+version: 0.0.1
+environment:
+  sdk: "^3.2.0"
+dev_dependencies:
+  flutter:
+    sdk: flutter
+  flutter_test:
+    sdk: flutter
+  test: ^1.25.4
+
+flutter:
+  assets:
+    - assets/json_files/absences.json
+    - assets/json_files/members.json
+
