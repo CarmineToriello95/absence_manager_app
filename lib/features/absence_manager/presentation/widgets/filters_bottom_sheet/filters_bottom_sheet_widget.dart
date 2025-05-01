@@ -36,102 +36,104 @@ class _BottomSheetWidgetState extends State<BottomSheetWidget> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(24.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            'Filters',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          const Divider(),
-          const Text(
-            'Date Range',
-            style:
-                TextStyle(fontWeight: FontWeight.bold, color: Colors.black54),
-          ),
-          const SizedBox(
-            height: 16.0,
-          ),
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.75,
-            child: ValueListenableBuilder(
-              valueListenable: currentEndDateNotifier,
-              builder: (_, currentEndDateValue, __) => DatePickerFieldWidget(
-                label: 'Start Date',
-                currentDate: currentStartDateNotifier.value,
-                firstDate: DateTime(2000),
-                lastDate: currentEndDateValue ?? DateTime(2100),
-                onPickedDate: (pickedDate) {
-                  currentStartDateNotifier.value = pickedDate;
-                },
-              ),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Filters',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-          ),
-          const SizedBox(
-            height: AppSpacing.md,
-          ),
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.75,
-            child: ValueListenableBuilder(
-              valueListenable: currentStartDateNotifier,
-              builder: (_, currentStartDateValue, __) => DatePickerFieldWidget(
-                label: 'End Date',
-                currentDate: currentEndDateNotifier.value,
-                firstDate: currentStartDateValue ?? DateTime(2000),
-                lastDate: DateTime(2100),
-                onPickedDate: (pickedDate) {
-                  currentEndDateNotifier.value = pickedDate;
-                },
-              ),
+            const Divider(),
+            const Text(
+              'Date Range',
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black54),
             ),
-          ),
-          const SizedBox(
-            height: AppSpacing.lg,
-          ),
-          const Text(
-            'Status',
-            style:
-                TextStyle(fontWeight: FontWeight.bold, color: Colors.black54),
-          ),
-          const SizedBox(
-            height: AppSpacing.md,
-          ),
-          ValueListenableBuilder(
-            valueListenable: selectedTypes,
-            builder: (_, value, __) => AbsenceTypeSelectionWidget(
-              selectedTypes: value,
-              onTapped: (newSelectedTypes) =>
-                  selectedTypes.value = Set.from(newSelectedTypes),
+            const SizedBox(
+              height: 16.0,
             ),
-          ),
-          const SizedBox(
-            height: AppSpacing.md,
-          ),
-          const Spacer(),
-          Center(
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Theme.of(context).colorScheme.primary),
-              child: const Text(
-                'Apply',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.75,
+              child: ValueListenableBuilder(
+                valueListenable: currentEndDateNotifier,
+                builder: (_, currentEndDateValue, __) => DatePickerFieldWidget(
+                  label: 'Start Date',
+                  currentDate: currentStartDateNotifier.value,
+                  firstDate: DateTime(2000),
+                  lastDate: currentEndDateValue ?? DateTime(2100),
+                  onPickedDate: (pickedDate) {
+                    currentStartDateNotifier.value = pickedDate;
+                  },
                 ),
               ),
-              onPressed: () {
-                _cubit.applyFilters(
-                  FiltersViewModel(
-                    startDate: currentStartDateNotifier.value,
-                    endDate: currentEndDateNotifier.value,
-                    absenceType: selectedTypes.value,
-                  ),
-                );
-                Navigator.pop(context);
-              },
             ),
-          ),
-        ],
+            const SizedBox(
+              height: AppSpacing.md,
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.75,
+              child: ValueListenableBuilder(
+                valueListenable: currentStartDateNotifier,
+                builder: (_, currentStartDateValue, __) =>
+                    DatePickerFieldWidget(
+                  label: 'End Date',
+                  currentDate: currentEndDateNotifier.value,
+                  firstDate: currentStartDateValue ?? DateTime(2000),
+                  lastDate: DateTime(2100),
+                  onPickedDate: (pickedDate) {
+                    currentEndDateNotifier.value = pickedDate;
+                  },
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: AppSpacing.lg,
+            ),
+            const Text(
+              'Status',
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black54),
+            ),
+            const SizedBox(
+              height: AppSpacing.md,
+            ),
+            ValueListenableBuilder(
+              valueListenable: selectedTypes,
+              builder: (_, value, __) => AbsenceTypeSelectionWidget(
+                selectedTypes: value,
+                onTapped: (newSelectedTypes) =>
+                    selectedTypes.value = Set.from(newSelectedTypes),
+              ),
+            ),
+            const SizedBox(
+              height: AppSpacing.lg,
+            ),
+            Center(
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Theme.of(context).colorScheme.primary),
+                child: const Text(
+                  'Apply',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                onPressed: () {
+                  _cubit.applyFilters(
+                    FiltersViewModel(
+                      startDate: currentStartDateNotifier.value,
+                      endDate: currentEndDateNotifier.value,
+                      absenceType: selectedTypes.value,
+                    ),
+                  );
+                  Navigator.pop(context);
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

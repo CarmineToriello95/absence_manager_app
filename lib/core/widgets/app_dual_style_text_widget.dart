@@ -23,7 +23,7 @@ class AppDualStyleTextWidget extends StatelessWidget {
             size: 16,
             color: Colors.grey[600],
           ),
-          SizedBox(
+          const SizedBox(
             width: 4.0,
           ),
           Flexible(
