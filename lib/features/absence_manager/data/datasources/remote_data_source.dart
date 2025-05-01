@@ -2,6 +2,7 @@ import 'package:crewmeister_frontend_coding_challenge/core/error/absence_manager
 import 'package:crewmeister_frontend_coding_challenge/features/absence_manager/data/models/absence_model.dart';
 import 'package:crewmeister_frontend_coding_challenge/features/absence_manager/data/models/member_model.dart';
 import 'package:api/api.dart';
+import 'package:injectable/injectable.dart';
 
 abstract class RemoteDataSource {
   /// Calls the api for fetching the absences
@@ -15,6 +16,7 @@ abstract class RemoteDataSource {
   Future<List<MemberModel>> fetchMembers();
 }
 
+@Injectable(as: RemoteDataSource)
 class RemoteDataSourceImpl implements RemoteDataSource {
   final CrewmeisterApi apiClient;
 

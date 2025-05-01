@@ -7,8 +7,10 @@ import 'package:crewmeister_frontend_coding_challenge/features/absence_manager/d
 import 'package:crewmeister_frontend_coding_challenge/features/absence_manager/domain/entities/member_entity.dart';
 import 'package:crewmeister_frontend_coding_challenge/features/absence_manager/domain/repositories/absence_manager_repository.dart';
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 
 /// Concrete implementation of [AbsenceManagerRepository]
+@Injectable(as: AbsenceManagerRepository)
 class AbsenceManagerRepositoryImpl implements AbsenceManagerRepository {
   final RemoteDataSource _remoteDataSource;
 

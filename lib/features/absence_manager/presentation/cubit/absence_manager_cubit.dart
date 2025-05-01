@@ -7,7 +7,9 @@ import 'package:crewmeister_frontend_coding_challenge/features/absence_manager/p
 import 'package:crewmeister_frontend_coding_challenge/features/absence_manager/presentation/models/absence_view_model.dart';
 import 'package:crewmeister_frontend_coding_challenge/features/absence_manager/presentation/models/filters_view_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
+@lazySingleton
 class AbsenceManagerCubit extends Cubit<AbsenceManagerCubitState> {
   final FetchAbsencesUsecase _fetchAbsencesUsecase;
   final FetchMembersUsecase _fetchMembersUsecase;
