@@ -11,12 +11,12 @@ environment:
 dependencies:
   api:
     path: ./api
+  build_runner: 2.4.13
   dartz: 0.10.1
   equatable: 2.0.7
   flutter:
     sdk: flutter
-
-  cupertino_icons: ^1.0.8
+  mockito: 5.4.4
 
 dev_dependencies:
   flutter_test:
