@@ -16,6 +16,7 @@ dependencies:
   equatable: 2.0.7
   flutter:
     sdk: flutter
+  flutter_bloc: 9.1.0
   mockito: 5.4.4
   json_annotation: 4.9.0
 
