@@ -1,9 +1,9 @@
 import 'package:crewmeister_frontend_coding_challenge/core/constants/app_spacing.dart';
 import 'package:flutter/material.dart';
 
-class AbsencesPageBodyErrorStateWidget extends StatelessWidget {
+class AbsencesPageErrorStateWidget extends StatelessWidget {
   final VoidCallback onFetchAbsencesButtonTapped;
-  const AbsencesPageBodyErrorStateWidget({
+  const AbsencesPageErrorStateWidget({
     super.key,
     required this.onFetchAbsencesButtonTapped,
   });
