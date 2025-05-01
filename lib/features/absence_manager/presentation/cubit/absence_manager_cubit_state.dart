@@ -33,20 +33,20 @@ class AbsenceManagerEmptyState extends AbsenceManagerCubitState {
 }
 
 class AbsenceManagerPopulatedState extends AbsenceManagerCubitState {
-  final List<AbsenceViewModel> absencesWithMembersDataModels;
+  final List<AbsenceViewModel> absencesViewModel;
   final int totalNumberOfAbsences;
   final int numberOfPages;
   final FiltersViewModel filtersViewModel;
 
   const AbsenceManagerPopulatedState({
-    required this.absencesWithMembersDataModels,
+    required this.absencesViewModel,
     required this.totalNumberOfAbsences,
     required this.numberOfPages,
     required this.filtersViewModel,
   });
 
   @override
-  List<Object?> get props => [absencesWithMembersDataModels, filtersViewModel];
+  List<Object?> get props => [absencesViewModel, filtersViewModel];
 }
 
 class AbsenceManagerErrorState extends AbsenceManagerCubitState {
