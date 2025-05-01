@@ -4,40 +4,42 @@ class AppDualStyleTextWidget extends StatelessWidget {
   final IconData icon;
   final String title;
   final String description;
+  final bool isIconVisible;
+
   const AppDualStyleTextWidget({
     super.key,
-    required this.icon,
     required this.title,
     required this.description,
+    required this.icon,
+    this.isIconVisible = true,
   });
 
   @override
-  Widget build(BuildContext context) => Column(
+  Widget build(BuildContext context) => Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Icon(
-                icon,
-                size: 16,
-                color: Colors.grey[600],
-              ),
-              const SizedBox(
-                width: 4.0,
-              ),
-              Text(
-                title,
-                style: TextStyle(color: Colors.grey[600]),
-              ),
-            ],
+          Icon(
+            icon,
+            size: 16,
+            color: Colors.grey[600],
           ),
-          Row(
-            children: [
-              const SizedBox(
-                width: 20.0,
+          SizedBox(
+            width: 4.0,
+          ),
+          Flexible(
+            child: Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(
+                    text: title,
+                    style: TextStyle(color: Colors.grey[600]),
+                  ),
+                  TextSpan(
+                    text: description,
+                  ),
+                ],
               ),
-              Text(description),
-            ],
+            ),
           ),
         ],
       );
