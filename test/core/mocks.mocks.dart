@@ -5,6 +5,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i4;
 
+import 'package:api/api.dart' as _i8;
 import 'package:crewmeister_frontend_coding_challenge/core/error/failure.dart'
     as _i5;
 import 'package:crewmeister_frontend_coding_challenge/features/absence_manager/domain/entities/absence_entity.dart'
@@ -83,4 +84,46 @@ class MockAbsenceManagerRepository extends _i1.Mock
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.Failure, List<_i7.MemberEntity>>>);
+}
+
+/// A class which mocks [CrewmeisterApi].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockCrewmeisterApi extends _i1.Mock implements _i8.CrewmeisterApi {
+  MockCrewmeisterApi() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  bool get isTest => (super.noSuchMethod(
+        Invocation.getter(#isTest),
+        returnValue: false,
+      ) as bool);
+
+  @override
+  _i4.Future<List<dynamic>> readJsonFile(String? path) => (super.noSuchMethod(
+        Invocation.method(
+          #readJsonFile,
+          [path],
+        ),
+        returnValue: _i4.Future<List<dynamic>>.value(<dynamic>[]),
+      ) as _i4.Future<List<dynamic>>);
+
+  @override
+  _i4.Future<List<dynamic>> absences() => (super.noSuchMethod(
+        Invocation.method(
+          #absences,
+          [],
+        ),
+        returnValue: _i4.Future<List<dynamic>>.value(<dynamic>[]),
+      ) as _i4.Future<List<dynamic>>);
+
+  @override
+  _i4.Future<List<dynamic>> members() => (super.noSuchMethod(
+        Invocation.method(
+          #members,
+          [],
+        ),
+        returnValue: _i4.Future<List<dynamic>>.value(<dynamic>[]),
+      ) as _i4.Future<List<dynamic>>);
 }
