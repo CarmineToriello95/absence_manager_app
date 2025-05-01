@@ -8,6 +8,8 @@ import 'dart:async' as _i4;
 import 'package:api/api.dart' as _i8;
 import 'package:crewmeister_frontend_coding_challenge/core/error/failure.dart'
     as _i5;
+import 'package:crewmeister_frontend_coding_challenge/core/usecases/usecase.dart'
+    as _i13;
 import 'package:crewmeister_frontend_coding_challenge/features/absence_manager/data/datasources/remote_data_source.dart'
     as _i9;
 import 'package:crewmeister_frontend_coding_challenge/features/absence_manager/data/models/absence_model.dart'
@@ -20,6 +22,10 @@ import 'package:crewmeister_frontend_coding_challenge/features/absence_manager/d
     as _i7;
 import 'package:crewmeister_frontend_coding_challenge/features/absence_manager/domain/repositories/absence_manager_repository.dart'
     as _i3;
+import 'package:crewmeister_frontend_coding_challenge/features/absence_manager/domain/usecases/fetch_absences_usecase.dart'
+    as _i12;
+import 'package:crewmeister_frontend_coding_challenge/features/absence_manager/domain/usecases/fetch_members_usecase.dart'
+    as _i14;
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
@@ -161,4 +167,66 @@ class MockRemoteDataSource extends _i1.Mock implements _i9.RemoteDataSource {
         returnValue:
             _i4.Future<List<_i11.MemberModel>>.value(<_i11.MemberModel>[]),
       ) as _i4.Future<List<_i11.MemberModel>>);
+}
+
+/// A class which mocks [FetchAbsencesUsecase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockFetchAbsencesUsecase extends _i1.Mock
+    implements _i12.FetchAbsencesUsecase {
+  MockFetchAbsencesUsecase() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<_i2.Either<_i5.Failure, List<_i6.AbsenceEntity>>> call(
+          {required _i13.NoParams? params}) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [],
+          {#params: params},
+        ),
+        returnValue:
+            _i4.Future<_i2.Either<_i5.Failure, List<_i6.AbsenceEntity>>>.value(
+                _FakeEither_0<_i5.Failure, List<_i6.AbsenceEntity>>(
+          this,
+          Invocation.method(
+            #call,
+            [],
+            {#params: params},
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.Failure, List<_i6.AbsenceEntity>>>);
+}
+
+/// A class which mocks [FetchMembersUsecase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockFetchMembersUsecase extends _i1.Mock
+    implements _i14.FetchMembersUsecase {
+  MockFetchMembersUsecase() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<_i2.Either<_i5.Failure, List<_i7.MemberEntity>>> call(
+          {required _i13.NoParams? params}) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [],
+          {#params: params},
+        ),
+        returnValue:
+            _i4.Future<_i2.Either<_i5.Failure, List<_i7.MemberEntity>>>.value(
+                _FakeEither_0<_i5.Failure, List<_i7.MemberEntity>>(
+          this,
+          Invocation.method(
+            #call,
+            [],
+            {#params: params},
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.Failure, List<_i7.MemberEntity>>>);
 }

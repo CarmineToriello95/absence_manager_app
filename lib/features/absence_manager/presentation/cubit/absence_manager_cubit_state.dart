@@ -46,7 +46,8 @@ class AbsenceManagerPopulatedState extends AbsenceManagerCubitState {
   });
 
   @override
-  List<Object?> get props => [absencesViewModel, filtersViewModel];
+  List<Object?> get props =>
+      [absencesViewModel, filtersViewModel, numberOfPages, filtersViewModel];
 }
 
 class AbsenceManagerErrorState extends AbsenceManagerCubitState {

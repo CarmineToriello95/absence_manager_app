@@ -16,6 +16,13 @@ class AbsencesPage extends StatefulWidget {
 
 class _AbsencesPageState extends State<AbsencesPage> {
   final AbsenceManagerCubit _cubit = getIt.get();
+
+  @override
+  void initState() {
+    _cubit.fetchData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) => Scaffold(
         backgroundColor: Theme.of(context).colorScheme.primaryFixed,

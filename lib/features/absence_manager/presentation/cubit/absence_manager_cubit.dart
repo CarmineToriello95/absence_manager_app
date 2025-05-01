@@ -1,4 +1,5 @@
 import 'package:crewmeister_frontend_coding_challenge/core/extensions/date_time_extension.dart';
+import 'package:crewmeister_frontend_coding_challenge/core/extensions/either_extension.dart';
 import 'package:crewmeister_frontend_coding_challenge/core/usecases/usecase.dart';
 import 'package:crewmeister_frontend_coding_challenge/features/absence_manager/domain/entities/absence_entity.dart';
 import 'package:crewmeister_frontend_coding_challenge/features/absence_manager/domain/entities/member_entity.dart';
@@ -22,9 +23,7 @@ class AbsenceManagerCubit extends Cubit<AbsenceManagerCubitState> {
   AbsenceManagerCubit(
     this._fetchAbsencesUsecase,
     this._fetchMembersUsecase,
-  ) : super(const AbsenceManagerInitialState()) {
-    fetchData();
-  }
+  ) : super(const AbsenceManagerInitialState());
 
   void fetchData() async {
     emit(const AbsenceManagerLoadingState());
@@ -36,23 +35,22 @@ class AbsenceManagerCubit extends Cubit<AbsenceManagerCubitState> {
     // Fetch the list of absences entities by calling the usecase.
     final fetchAbsencesResult =
         await _fetchAbsencesUsecase.call(params: const NoParams());
-    fetchAbsencesResult.fold(
-      (failure) {
-        emit(AbsenceManagerErrorState(failure: failure));
-      },
-      (data) {
-        absences = data;
-      },
-    );
+    if (fetchAbsencesResult.isLeft()) {
+      emit(AbsenceManagerErrorState(failure: fetchAbsencesResult.asLeft()));
+      return;
+    } else {
+      absences = fetchAbsencesResult.asRight();
+    }
 
     // Fetch the list of members entities by calling the usecase.
     final fetchMembersResult =
         await _fetchMembersUsecase.call(params: const NoParams());
-    fetchMembersResult.fold((failure) {
-      emit(AbsenceManagerErrorState(failure: failure));
-    }, (data) {
-      members = data;
-    });
+    if (fetchMembersResult.isLeft()) {
+      emit(AbsenceManagerErrorState(failure: fetchMembersResult.asLeft()));
+      return;
+    } else {
+      members = fetchMembersResult.asRight();
+    }
 
     // Create a Map with userId/memberName as key value pairs.
     // We need to display the member name for each absence, and each absence has a userId.
@@ -98,6 +96,7 @@ class AbsenceManagerCubit extends Cubit<AbsenceManagerCubitState> {
   }
 
   void applyFilters(FiltersViewModel newFiltersViewModel) {
+    emit(const AbsenceManagerLoadingState());
     int numberOfActiveFilters = newFiltersViewModel.numberOfActiveFilters();
 
     /// If the active filters are less then 2
