@@ -16,4 +16,12 @@ class MemberModel extends MemberEntity {
 
   factory MemberModel.fromJson(Map<String, dynamic> json) =>
       _$MemberModelFromJson(json);
+
+  MemberEntity toEntity() => MemberEntity(
+        crewId: crewId,
+        id: id,
+        image: image,
+        name: name,
+        userId: userId,
+      );
 }

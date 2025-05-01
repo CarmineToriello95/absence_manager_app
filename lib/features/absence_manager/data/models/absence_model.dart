@@ -23,4 +23,19 @@ class AbsenceModel extends AbsenceEntity {
 
   factory AbsenceModel.fromJson(Map<String, dynamic> json) =>
       _$AbsenceModelFromJson(json);
+
+  AbsenceEntity toEntity() => AbsenceEntity(
+        admitterId: admitterId,
+        admitterNote: admitterNote,
+        confirmedAt: confirmedAt,
+        createdAt: createdAt,
+        crewId: crewId,
+        endDate: endDate,
+        id: id,
+        memberNote: memberNote,
+        rejectedAt: rejectedAt,
+        startDate: startDate,
+        type: type,
+        userId: userId,
+      );
 }

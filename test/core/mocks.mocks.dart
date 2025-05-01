@@ -8,6 +8,12 @@ import 'dart:async' as _i4;
 import 'package:api/api.dart' as _i8;
 import 'package:crewmeister_frontend_coding_challenge/core/error/failure.dart'
     as _i5;
+import 'package:crewmeister_frontend_coding_challenge/features/absence_manager/data/datasources/remote_data_source.dart'
+    as _i9;
+import 'package:crewmeister_frontend_coding_challenge/features/absence_manager/data/models/absence_model.dart'
+    as _i10;
+import 'package:crewmeister_frontend_coding_challenge/features/absence_manager/data/models/member_model.dart'
+    as _i11;
 import 'package:crewmeister_frontend_coding_challenge/features/absence_manager/domain/entities/absence_entity.dart'
     as _i6;
 import 'package:crewmeister_frontend_coding_challenge/features/absence_manager/domain/entities/member_entity.dart'
@@ -126,4 +132,33 @@ class MockCrewmeisterApi extends _i1.Mock implements _i8.CrewmeisterApi {
         ),
         returnValue: _i4.Future<List<dynamic>>.value(<dynamic>[]),
       ) as _i4.Future<List<dynamic>>);
+}
+
+/// A class which mocks [RemoteDataSource].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockRemoteDataSource extends _i1.Mock implements _i9.RemoteDataSource {
+  MockRemoteDataSource() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<List<_i10.AbsenceModel>> fetchAbsences() => (super.noSuchMethod(
+        Invocation.method(
+          #fetchAbsences,
+          [],
+        ),
+        returnValue:
+            _i4.Future<List<_i10.AbsenceModel>>.value(<_i10.AbsenceModel>[]),
+      ) as _i4.Future<List<_i10.AbsenceModel>>);
+
+  @override
+  _i4.Future<List<_i11.MemberModel>> fetchMembers() => (super.noSuchMethod(
+        Invocation.method(
+          #fetchMembers,
+          [],
+        ),
+        returnValue:
+            _i4.Future<List<_i11.MemberModel>>.value(<_i11.MemberModel>[]),
+      ) as _i4.Future<List<_i11.MemberModel>>);
 }
