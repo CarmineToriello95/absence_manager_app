@@ -1,4 +1,4 @@
-# 🚀 Crewmeister coding challenge - Frontend (Flutter)
+# 🚀 Absence Manager App concept
 
 The checkmarked requirements have been satisfied:
 
@@ -17,7 +17,6 @@ The checkmarked requirements have been satisfied:
 - [x] I want to see a loading state until the list is available.
 - [x] I want to see an error state if the list is unavailable.
 - [x] I want to see an empty state if there are no results.
-- [ ] (Bonus) I can generate an iCal file and import it into outlook.
 
 ## Info
 
