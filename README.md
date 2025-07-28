@@ -25,7 +25,6 @@ The checkmarked requirements have been satisfied:
 - Development device: iPhone 15 Simulator with iOS 17
 
 The application has been implemented for **mobile devices**.
-However, it is possible to test it on Github pages https://carminetoriello95.github.io/. 
 
 ## App Preview
 
